@@ -4,4 +4,4 @@ spring:
   application:
     name: xtool-common
   profiles:
-    active:
+    active: demo

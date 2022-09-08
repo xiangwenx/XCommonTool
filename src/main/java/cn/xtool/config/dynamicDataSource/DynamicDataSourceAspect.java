@@ -35,7 +35,6 @@ public class DynamicDataSourceAspect {
         try {
             assert sra != null;
             HttpServletRequest request = sra.getRequest();
-            //String tenantId = request.getParameter("tenantId");
             HttpSession session = sra.getRequest().getSession(true);
             String tenantId = (String) session.getAttribute("tenantId");
             if (StringUtils.isEmpty(tenantId)) {
