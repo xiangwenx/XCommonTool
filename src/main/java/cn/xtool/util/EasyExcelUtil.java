@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class EasyExcelUtil {
     public static void main(String[] args) throws IOException {
-        String path = "D:\\Desktop\\企业碳排放+ (2).xlsx";
-        List<List<CellData>> rows = getRows(Files.newInputStream(new File(path).toPath()), 0, 20, 0, 41, false);
+        String path = "D:\\Desktop\\新建Excel.xlsx";
+        List<List<CellData>> rows = getRows(Files.newInputStream(new File(path).toPath()), 0, 2, 0, 41, false);
         System.out.println(rows);
     }
 
@@ -55,7 +55,7 @@ public class EasyExcelUtil {
             List<CellData> rowData = Lists.newArrayList();
             metadata.add(rowData);
             for (int x = startCell; x <= endCell; x++) {
-                rowData.add(new CellData(reader.readCellValue(x, y), y, x));
+                rowData.add(new CellData(reader.getCell(x, y), y, x));
             }
         }
         if (readHeader) {
@@ -63,7 +63,7 @@ public class EasyExcelUtil {
             for (int i = 0; i < headers.size(); i++) {
                 headers.add(new CellData(headers.get(i), 1, i));
             }
-            metadata.add(0, headerData);
+            metadata.add(headerData);
         }
         return metadata;
     }
